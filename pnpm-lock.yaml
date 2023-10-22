@@ -38,8 +38,8 @@ devDependencies:
     specifier: ^1.1.4
     version: 1.1.4(@twind/core@1.1.3)(typescript@4.9.5)
   '@types/chrome':
-    specifier: 0.0.224
-    version: 0.0.224
+    specifier: 0.0.248
+    version: 0.0.248
   '@types/jest':
     specifier: 29.0.3
     version: 29.0.3
@@ -1257,8 +1257,8 @@ packages:
       '@babel/types': 7.23.0
     dev: true
 
-  /@types/chrome@0.0.224:
-    resolution: {integrity: sha512-YkL7q3KDV7OAKgVCBNIfH73rnjNMbIzAYHzTa2DKhSK/2z0Wf/n8yJnK/UoW+lvuYJJR4LtAkG3YvsIZTy7BOA==}
+  /@types/chrome@0.0.248:
+    resolution: {integrity: sha512-qtBzxZD1v3eWZn8XxH1i07pAhzJDHnxJBBVy7bmntXxXKxjzNXYxD41teqa5yOcX/Yy8brRFGZESEzGoINvBDg==}
     dependencies:
       '@types/filesystem': 0.0.34
       '@types/har-format': 1.2.14
