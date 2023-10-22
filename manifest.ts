@@ -8,14 +8,22 @@ const manifest: chrome.runtime.ManifestV3 = {
   name: packageJson.name,
   version: packageJson.version,
   description: packageJson.description,
-  permissions: ['storage'],
+  author: packageJson.author,
+  homepage_url: 'https://github.com/bambooom/focus-tomato',
+  offline_enabled: true,
+  permissions: [
+    'storage',
+    'alarms',
+    'contextMenus',
+    'notifications',
+  ],
   options_page: 'src/pages/options/index.html',
   background: {
     service_worker: 'src/pages/background/index.js',
     type: 'module',
   },
   action: {
-    default_popup: 'src/pages/popup/index.html',
+    // default_popup: 'src/pages/popup/index.html',
     default_icon: 'icon-32.png',
   },
   icons: {
@@ -29,7 +37,7 @@ const manifest: chrome.runtime.ManifestV3 = {
       css: ['assets/css/contentStyle<KEY>.chunk.css'],
     },
   ],
-  devtools_page: 'src/pages/devtools/index.html',
+  // devtools_page: 'src/pages/devtools/index.html',
   web_accessible_resources: [
     {
       resources: ['assets/js/*.js', 'assets/css/*.css', 'icon-128.png', 'icon-32.png'],
