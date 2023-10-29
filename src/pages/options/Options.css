@@ -14,6 +14,7 @@ html, body {
   justify-content: center; */
 }
 
+/* options header */
 .opts-header {
   background: linear-gradient(to bottom, #d00, #b00);
   padding: 10px 0 0 0;
@@ -72,4 +73,18 @@ html, body {
 
 .opts-header a.pending {
   pointer-events: none;
+}
+
+/* options content */
+.opts-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+  padding: 50px 0 30px 0;
+}
+
+.opts-content-inner {
+  width: 600px;
+  margin: 0 auto;
 }
