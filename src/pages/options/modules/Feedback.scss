@@ -1,0 +1,68 @@
+.feedback {
+  font-size: 15px;
+}
+
+.feedback h1 {
+  color: #a00;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+}
+
+.feedback h2 {
+  color: #a00;
+  font-size: 16px;
+  margin: 0 0 5px 0;
+  padding: 0;
+}
+
+.feedback a {
+  color: #555;
+  text-decoration: underline;
+
+  &:hover {
+    color: #a00;
+  }
+}
+
+.feedback .links {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  line-height: 140%;
+
+  p {
+    flex: 40%;
+    text-align: right;
+    color: #333;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    margin: 0;
+  }
+
+  a {
+    color: #444;
+    text-decoration: none;
+
+    &:hover {
+      color: #a00;
+      text-decoration: underline;
+    }
+  }
+
+  ul {
+    flex: 55%;
+    list-style-type: none;
+    margin: 0 0 0 20px;
+    padding: 0;
+
+    li {
+      margin-bottom: 7px;
+    }
+  }
+}

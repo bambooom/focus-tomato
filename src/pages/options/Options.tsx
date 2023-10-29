@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Tab from '@pages/options/components/Tab';
 import icon from '@assets/img/icon-48.png';
-import '@pages/options/Options.css';
+import '@pages/options/Options.scss';
 
 import Settings from './modules/Settings';
 import History from './modules/History';
