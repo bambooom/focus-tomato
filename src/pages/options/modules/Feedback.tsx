@@ -1,9 +1,8 @@
 import React from 'react';
 import './Feedback.scss'
-import packageJson from '@root/package.json';
 
 const Feedback: React.FC = () => {
-
+  const manifest = chrome.runtime.getManifest();
   return (
     <div className='tab-page feedback'>
       <div className="links">
@@ -16,7 +15,7 @@ const Feedback: React.FC = () => {
       <div className="links">
         <p>Version</p>
         <ul>
-          <li>{ packageJson.version }</li>
+          <li>{ manifest.version }</li>
         </ul>
       </div>
     </div>
