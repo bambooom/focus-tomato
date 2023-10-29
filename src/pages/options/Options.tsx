@@ -3,9 +3,9 @@ import Tab from '@pages/options/components/Tab';
 import icon from '@assets/img/icon-48.png';
 import '@pages/options/Options.css';
 
-import Settings from './module/Settings';
-import History from './module/History';
-import Feedback from './module/Feedback';
+import Settings from './modules/Settings';
+import History from './modules/History';
+import Feedback from './modules/Feedback';
 
 const tabs = [
   'settings',
