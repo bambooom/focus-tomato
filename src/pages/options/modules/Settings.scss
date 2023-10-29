@@ -1,0 +1,60 @@
+.section {
+  line-height: 110%;
+  margin-bottom: 40px;
+
+  h2 {
+    margin: 0 0 15px 0;
+    padding: 0 0 5px 0;
+    font-weight: 500;
+    color: #a00;
+    border-bottom: 1px solid #aaa;
+  }
+}
+
+.field {
+  display: block;
+  label {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+}
+
+.group {
+  margin: 0 0 0 40px;
+}
+
+input[type=number] {
+  padding: 0;
+}
+input.duration {
+  width: 50px;
+}
+
+.saved-noti {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0;
+
+  p {
+    margin: 40px;
+    padding: 10px 20px;
+    display: inline-flex;
+    align-items: center;
+    color: #080;
+    background: #fff;
+    border: 1px solid #080;
+    border-radius: 40px;
+    font-size: 18px;
+
+    img {
+      width: 32px;
+      height: 32px;
+      margin-right: 10px;
+    }
+  }
+}
