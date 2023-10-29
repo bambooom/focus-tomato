@@ -1,5 +1,6 @@
 {
   "name": "focus-tomato",
+  "appName": "Focus Tomato",
   "version": "0.0.1",
   "description": "Pomodoro timer assistant to help you focus and block distracting websites",
   "license": "MIT",
