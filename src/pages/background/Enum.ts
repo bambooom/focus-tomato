@@ -1,4 +1,4 @@
-class EnumOption {
+export class EnumOption {
   value: string | number; // not sure if number and string enough
   symbol: symbol;
   constructor(name, value) {

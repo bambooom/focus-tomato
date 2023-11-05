@@ -28,6 +28,10 @@ class ServiceBroker {
     return service;
   }
 
+  static unregister(service) {
+    delete this._instance.services[service.constructor.name];
+  }
+
   unregister(service) {
     delete this.services[service.constructor.name];
     return service;

@@ -6,8 +6,7 @@ class ChromeError extends Error
   }
 }
 
-class Chrome
-{
+class Chrome {
   static get tabs() {
     return Tabs;
   }
@@ -39,12 +38,12 @@ class Chrome
 
 function promise(fn): Promise<any> {
   return new Promise((resolve, reject) => {
-    const callback = (...results) => {
+    const callback = (...results: any[]) => {
       const err = chrome.runtime.lastError;
       if (err) {
         reject(new ChromeError(err.message));
       } else {
-        resolve(...results);
+        resolve(results);
       }
     };
 
@@ -176,10 +175,10 @@ class Notifications
   }
 }
 
-class Storage {
+export class Storage {
   store: chrome.storage.StorageArea;
-  _sync?: Storage;
-  // _local?: Storage;
+  static _sync: Storage;
+  static _local: Storage;
   constructor(store: chrome.storage.StorageArea) {
     this.store = store;
   }
@@ -200,6 +199,20 @@ class Storage {
     return promise(() => {
       this.store.clear();
     });
+  }
+
+  static get sync() {
+    if (!this._sync) {
+      this._sync = new Storage(chrome.storage.sync);
+    }
+    return this._sync;
+  }
+
+  static get local() {
+    if (!this._local) {
+      this._local = new Storage(chrome.storage.local);
+    }
+    return this._local;
   }
 }
 
