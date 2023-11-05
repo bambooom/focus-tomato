@@ -1,0 +1,27 @@
+.stats {
+  margin: 20px 40px 80px 40px;
+  display: flex;
+  justify-content: space-between;
+
+  .stat {
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+
+    .value {
+      color: #a00;
+      font-size: 30px;
+      margin-bottom: 5px;
+    }
+
+    .bucket {
+      color: #333;
+      font-size: 1rem;
+    }
+
+    .average {
+      color: #555;
+      margin-top: 3px;
+    }
+  }
+}

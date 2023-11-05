@@ -9,8 +9,8 @@ import Feedback from './modules/Feedback';
 
 const tabs = [
   'settings',
-  'history',
-  'feedback',
+  // 'history',
+  // 'feedback',
 ];
 const Options: React.FC = () => {
   const [curTab, setTab] = useState(tabs[0]);
