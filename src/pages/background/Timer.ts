@@ -1,5 +1,6 @@
 import Enum, { EnumOption } from './Enum';
 import EventEmitter from 'events';
+import { Timeout } from '@types/node';
 
 const TimerState = new Enum({
   Stopped: 0,
@@ -11,8 +12,8 @@ class Timer extends EventEmitter {
   state: EnumOption;
   duration: number;
   tick: number;
-  tickInterval: NodeJS.Timer | null;
-  expireTimeout: NodeJS.Timeout | null;
+  tickInterval: Timeout | null;
+  expireTimeout: Timeout | null;
   checkpointStartAt: number | null;
   checkpointElapsed: number;
   constructor(duration: number, tick: number) {
