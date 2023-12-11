@@ -4,25 +4,14 @@ export default function customDynamicImport(): PluginOption {
   return {
     name: 'custom-dynamic-import',
     renderDynamicImport({ moduleId }) {
-      if (!moduleId.includes('node_modules')) {
-        // ↑ dont modify any import from node_modules
-        if (process.env.__FIREFOX__) {
-          return {
-            left: `
-          {
-            const dynamicImport = (path) => import(path);
-            dynamicImport(browser.runtime.getURL('./') + 
-            `,
-            right: ".split('../').join(''))}",
-          };
-        }
+      if (!moduleId.includes('node_modules') && process.env.__FIREFOX__) {
         return {
           left: `
           {
             const dynamicImport = (path) => import(path);
-            dynamicImport(
+            dynamicImport(browser.runtime.getURL('./') +
             `,
-          right: ')}',
+          right: ".split('../').join(''))}",
         };
       }
       return {
