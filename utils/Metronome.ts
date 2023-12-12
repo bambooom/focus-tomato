@@ -17,7 +17,7 @@ class Metronome {
   buffers: AudioBuffer[];
   period: number;
   context: AudioContext;
-  interval: NodeJS.Timer | null;
+  interval: NodeJS.Timeout | null;
   scheduledTime: number;
   soundIndex: number;
   contextLock: Mutex;
