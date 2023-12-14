@@ -24,6 +24,7 @@ class ServiceBroker {
   }
 
   register(service) {
+    console.log(service);
     this.services[service.constructor.name] = service;
     return service;
   }
@@ -51,6 +52,7 @@ class ServiceBroker {
     // Service is defined in another context, use sendMessage to call it.
     return await new Promise((resolve, reject) => {
       const message = { serviceName, methodName, args };
+      console.log('message: ', message);
       chrome.runtime.sendMessage(message, ({ result, error }) => {
         if (error !== undefined) {
           reject(error);
@@ -62,21 +64,31 @@ class ServiceBroker {
   }
 
   onMessage({ serviceName, methodName, args }, sender, respond) {
+    console.log('on message1111: ', serviceName, methodName, args, sender, respond);
     const service = this.services[serviceName];
+    console.log('222');
     if (!service || methodName === undefined) {
+      console.log('3333');
       // Service is not defined in this context, so we have nothing to do.
       return;
     }
 
+    console.log('444');
+
     if (!service[methodName]) {
+      console.log('555');
       respond({ error: `Invalid service request: ${serviceName}.${methodName}.` });
       return true;
     }
 
+    console.log('666');
+
     (async () => {
       try {
+        console.log(7777);
         respond({ result: await service[methodName](...args) });
       } catch (e) {
+        console.log(888);
         console.error(e);
         respond({ error: `${e}` });
       }
@@ -121,12 +133,12 @@ class ServiceProxy extends EventEmitter {
 
     // eslint-disable-next-line @typescript-eslint/no-this-alias
     const self = this;
-    return async function() {
+    return async function () {
       const call = {
         serviceName: self.serviceName,
         methodName: prop,
         // eslint-disable-next-line prefer-rest-params
-        args: Array.from(arguments)
+        args: Array.from(arguments),
       };
       return await ServiceBroker.invoke(call);
     };
@@ -149,16 +161,17 @@ class Service {
   }
 
   emit(eventName, ...args) {
+    console.log('emit: ', eventName, args);
     chrome.runtime.sendMessage({
       serviceName: this.serviceName,
       eventName,
-      args
+      args,
     });
   }
 
   static get proxy() {
     const serviceName = this.name;
-    const create = () => new Proxy(function() {}, new ServiceProxy(serviceName));
+    const create = () => new Proxy(function () {}, new ServiceProxy(serviceName));
 
     const handler = {
       construct() {
@@ -173,7 +186,7 @@ class Service {
           return undefined;
         }
 
-        return new Proxy(function() {}, {
+        return new Proxy(function () {}, {
           get(target, prop) {
             return (...args) => {
               const client = create();
@@ -183,16 +196,13 @@ class Service {
                 client.dispose();
               }
             };
-          }
+          },
         });
-      }
+      },
     };
 
-    return new Proxy(function() {}, handler);
+    return new Proxy(function () {}, handler);
   }
 }
 
-export {
-  Service,
-  ServiceBroker
-};
+export { Service, ServiceBroker };

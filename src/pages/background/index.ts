@@ -6,7 +6,15 @@ import { PomodoroTimer } from './Timer';
 import { createPomodoroMenu } from './Menu';
 import { History } from './History';
 import { HistoryService, SoundsService, SettingsService, PomodoroService, OptionsService } from './Services';
-import { BadgeObserver, TimerSoundObserver, ExpirationSoundObserver, NotificationObserver, HistoryObserver, CountdownObserver, MenuObserver } from './Observers';
+import {
+  BadgeObserver,
+  TimerSoundObserver,
+  ExpirationSoundObserver,
+  NotificationObserver,
+  HistoryObserver,
+  CountdownObserver,
+  MenuObserver,
+} from './Observers';
 import * as Alarms from './Alarms';
 import { ServiceBroker } from '@root/utils/Service';
 
@@ -28,7 +36,9 @@ async function run() {
     // See https://developer.chrome.com/apps/runtime#event-onUpdateAvailable.
   });
 
-  const settingsManager = new StorageManager(new SettingsSchema(), Chrome.storage.sync)
+  const settingsManager = new StorageManager(new SettingsSchema(), Chrome.storage.sync);
+  // this await function cannot get the result in background script (service worker)
+  // @todo: find a way to make this work
   const settings = await PersistentSettings.create(settingsManager);
   const timer = new PomodoroTimer(settings);
   const history = new History();
@@ -65,4 +75,4 @@ async function run() {
   ServiceBroker.register(new OptionsService());
 }
 
-run()
+run();
